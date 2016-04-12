@@ -34,9 +34,6 @@
                                 <state key="normal" title="LOGIN">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="B59-o4-VSW" kind="show" identifier="cofirmLogin" id="6CP-If-jVT"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0h-b4-vWq">
                                 <rect key="frame" x="204" y="398" width="121" height="51"/>
@@ -79,53 +76,61 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="B59-o4-VSW" kind="relationship" relationship="rootViewController" id="FYQ-u9-lI9"/>
+                        <segue destination="ByJ-cR-la9" kind="relationship" relationship="rootViewController" id="gkQ-9D-OWd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbK-es-XB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-70" y="-470"/>
         </scene>
-        <!--ImageController-->
-        <scene sceneID="0DP-Ah-2cp">
+        <!--View Controller-->
+        <scene sceneID="HT5-TC-vkp">
             <objects>
-                <viewController title="ImageController" id="B59-o4-VSW" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="MaI-IJ-MTH">
+                <viewController id="ByJ-cR-la9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B1Q-aM-RNC"/>
+                        <viewControllerLayoutGuide type="bottom" id="wHa-Xj-4Sk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5nJ-in-SBz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="kUB-5J-H0y">
-                            <size key="itemSize" width="125" height="200"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="y2S-va-Dvg">
-                                <rect key="frame" x="0.0" y="64" width="125" height="200"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="200"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXE-u4-3CG">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="200"/>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="B59-o4-VSW" id="oc9-gy-JJu"/>
-                            <outlet property="delegate" destination="B59-o4-VSW" id="rhS-ts-bd4"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="CR2-tn-ewL"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2B89064B00000578-0-image-a-25_1440115471750" translatesAutoresizingMaskIntoConstraints="NO" id="PLN-bS-wCT">
+                                <rect key="frame" x="6" y="72" width="120" height="190"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="38235-poster-of-wake-up-sid-movie" translatesAutoresizingMaskIntoConstraints="NO" id="dD5-3N-kHa">
+                                <rect key="frame" x="131" y="72" width="112" height="190"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="6738" translatesAutoresizingMaskIntoConstraints="NO" id="eEc-qM-qjo">
+                                <rect key="frame" x="251" y="72" width="116" height="190"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Alternate_Inception_Poster_Victim_Bad_Design_And_Clunky_Tagline_1290968835" translatesAutoresizingMaskIntoConstraints="NO" id="ESl-fo-V9y">
+                                <rect key="frame" x="7" y="270" width="120" height="190"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Da_Vinci_Code_poster" translatesAutoresizingMaskIntoConstraints="NO" id="z9r-fa-G9V">
+                                <rect key="frame" x="132" y="270" width="112" height="190"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MV5BMTM2ODk0NDAwMF5BMl5BanBnXkFtZTcwNTM1MDc2Mw@@._V1_SX640_SY720_" translatesAutoresizingMaskIntoConstraints="NO" id="Auk-wO-pmg">
+                                <rect key="frame" x="252" y="270" width="116" height="190"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="WHIPLASH+onesheet" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-1r-9fr">
+                                <rect key="frame" x="7" y="463" width="120" height="190"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="file_598553_birdman-poster2" translatesAutoresizingMaskIntoConstraints="NO" id="fUK-xu-rRg">
+                                <rect key="frame" x="253" y="463" width="116" height="190"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="dx0-i5-GxG">
+                                <rect key="frame" x="133" y="463" width="112" height="190"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jcy-M4-Fwi"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pvZ-VX-XAN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lb1-1U-zqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="219.5" y="325.5"/>
+            <point key="canvasLocation" x="200.5" y="325.5"/>
         </scene>
         <!--DetailViewController-->
         <scene sceneID="rCR-LE-Fra">
@@ -223,10 +228,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="2B89064B00000578-0-image-a-25_1440115471750" width="369" height="489"/>
+        <image name="38235-poster-of-wake-up-sid-movie" width="369" height="501"/>
+        <image name="6738" width="369" height="501"/>
+        <image name="Alternate_Inception_Poster_Victim_Bad_Design_And_Clunky_Tagline_1290968835" width="369" height="501"/>
+        <image name="Da_Vinci_Code_poster" width="369" height="555"/>
+        <image name="MV5BMTM2ODk0NDAwMF5BMl5BanBnXkFtZTcwNTM1MDc2Mw@@._V1_SX640_SY720_" width="369" height="501"/>
         <image name="Spotlight Logo" width="228" height="86"/>
+        <image name="WHIPLASH+onesheet" width="369" height="501"/>
         <image name="Whiplash" width="750" height="424"/>
+        <image name="avatar" width="369" height="555"/>
+        <image name="file_598553_birdman-poster2" width="369" height="555"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="FYQ-u9-lI9"/>
-    </inferredMetricsTieBreakers>
 </document>
