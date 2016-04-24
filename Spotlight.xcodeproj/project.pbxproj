@@ -10,10 +10,6 @@
 		5EDBD7431CBDA172002A8416 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDBD7421CBDA172002A8416 /* DetailViewController.swift */; };
 		6E2773A31CC6ABC800E222D0 /* PickContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2773A21CC6ABC800E222D0 /* PickContactsController.swift */; };
 		6E9BFE0C1CBD9C3B0025B500 /* ImageCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BFE0B1CBD9C3B0025B500 /* ImageCollectionController.swift */; };
-		6EA91D7A1CCC0C8C00E1B6CB /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA91D761CCC0C8B00E1B6CB /* FBSDKCoreKit.framework */; };
-		6EA91D7B1CCC0C8C00E1B6CB /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA91D771CCC0C8C00E1B6CB /* FBSDKLoginKit.framework */; };
-		6EA91D7C1CCC0C8C00E1B6CB /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA91D781CCC0C8C00E1B6CB /* FBSDKMessengerShareKit.framework */; };
-		6EA91D7D1CCC0C8C00E1B6CB /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA91D791CCC0C8C00E1B6CB /* FBSDKShareKit.framework */; };
 		6EFDE19B1CBB460800248E9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFDE19A1CBB460800248E9D /* AppDelegate.swift */; };
 		6EFDE19D1CBB460800248E9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFDE19C1CBB460800248E9D /* LoginViewController.swift */; };
 		6EFDE1A01CBB460800248E9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFDE19E1CBB460800248E9D /* Main.storyboard */; };
@@ -25,10 +21,6 @@
 		5EDBD7421CBDA172002A8416 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6E2773A21CC6ABC800E222D0 /* PickContactsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickContactsController.swift; sourceTree = "<group>"; };
 		6E9BFE0B1CBD9C3B0025B500 /* ImageCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionController.swift; sourceTree = "<group>"; };
-		6EA91D761CCC0C8B00E1B6CB /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../Documents/FacebookSDKs-iOS-20160412/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
-		6EA91D771CCC0C8C00E1B6CB /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../Documents/FacebookSDKs-iOS-20160412/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
-		6EA91D781CCC0C8C00E1B6CB /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKMessengerShareKit.framework; path = "../../../Documents/FacebookSDKs-iOS-20160412/FBSDKMessengerShareKit.framework"; sourceTree = "<group>"; };
-		6EA91D791CCC0C8C00E1B6CB /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../Documents/FacebookSDKs-iOS-20160412/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		6EFDE1971CBB460800248E9D /* Spotlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFDE19A1CBB460800248E9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EFDE19C1CBB460800248E9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -43,10 +35,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EA91D7A1CCC0C8C00E1B6CB /* FBSDKCoreKit.framework in Frameworks */,
-				6EA91D7B1CCC0C8C00E1B6CB /* FBSDKLoginKit.framework in Frameworks */,
-				6EA91D7C1CCC0C8C00E1B6CB /* FBSDKMessengerShareKit.framework in Frameworks */,
-				6EA91D7D1CCC0C8C00E1B6CB /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,10 +44,6 @@
 		6EFDE18E1CBB460800248E9D = {
 			isa = PBXGroup;
 			children = (
-				6EA91D761CCC0C8B00E1B6CB /* FBSDKCoreKit.framework */,
-				6EA91D771CCC0C8C00E1B6CB /* FBSDKLoginKit.framework */,
-				6EA91D781CCC0C8C00E1B6CB /* FBSDKMessengerShareKit.framework */,
-				6EA91D791CCC0C8C00E1B6CB /* FBSDKShareKit.framework */,
 				6EFDE1991CBB460800248E9D /* Spotlight */,
 				6EFDE1981CBB460800248E9D /* Products */,
 			);
@@ -280,7 +264,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "~/Documents/FacebookSDKs-iOS-20160412";
 				INFOPLIST_FILE = Spotlight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kevios9103.Spotlight;
@@ -295,7 +278,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "~/Documents/FacebookSDKs-iOS-20160412";
 				INFOPLIST_FILE = Spotlight/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kevios9103.Spotlight;
