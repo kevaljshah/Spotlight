@@ -13,15 +13,31 @@ class DetailViewController: UIViewController, CNContactPickerDelegate
 {
     @IBOutlet var trailerVid: UIWebView!
     @IBOutlet var buttonText: UIButton!
-    @IBOutlet var likesCount: UILabel!
     var count: Int!
+    
+    var movie: Movie! {
+        didSet {
+            navigationItem.title = movie.title
+        }
+    }
+    
+    var movieStore: MovieStore!
+    
+    @IBOutlet var movieTitle: UILabel!
+    @IBOutlet var movieSynposis: UITextView!
+    @IBOutlet var movieRating: UILabel!
+    @IBOutlet var movieYear: UILabel!
+    @IBOutlet var movieReleaseDate: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        likesCount.text = "45"
-        count = 45
-        //let vidWidth = trailerVid.wid
-        //let vidHeight = trailerVid.height
+        NSOperationQueue.mainQueue().addOperationWithBlock {
+            self.movieTitle.text = self.movie.title
+            self.movieYear.text = String(self.movie.year)
+            self.movieSynposis.text = self.movie.synopsis
+            self.movieReleaseDate.text = self.movie.releaseDate
+            self.movieRating.text = String(self.movie.criticsRating)
+        }
         let youtubeLink:String = "https://www.youtube.com/embed/"
         let youtubeID: String = "7d_jQycdQGo"
         let finalLink: String = youtubeLink+youtubeID
@@ -31,6 +47,9 @@ class DetailViewController: UIViewController, CNContactPickerDelegate
         self.trailerVid.loadHTMLString(embedVid as String, baseURL: nil)
         trailerVid.scrollView.scrollEnabled = false;
         trailerVid.scrollView.bounces = false;
+        //let vidWidth = trailerVid.wid
+        //let vidHeight = trailerVid.height
+
     }
     
     @IBAction func recommendButton(sender: UIButton) {
@@ -42,19 +61,5 @@ class DetailViewController: UIViewController, CNContactPickerDelegate
             
             self.presentViewController(activityVC, animated: true, completion: nil)
     }
-    @IBAction func addButton(sender: AnyObject) {
-        
-        if buttonText.currentTitle == "Like" {
-            buttonText.setTitle("Dislike", forState: .Normal)
-            count = count + 1
-            likesCount.text = String(count)
-        }
-        else
-        {
-            buttonText.setTitle("Like", forState: .Normal)
-            count = count - 1
-            likesCount.text = String(count)
-        }
-        
-    }
+    
 }

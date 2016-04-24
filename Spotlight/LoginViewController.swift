@@ -11,10 +11,30 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    
+    var movieStore: MovieStore!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        movieStore.fetchRecentPhotos() {
+            (movieResult) -> Void in
+            
+            switch movieResult {
+            case let .Success(movies):
+                print("Successfully found \(movies.count) recent movies")
+            case let .Failure(error):
+                print("Error fetching recent photos: \(error)")
+            }
+        }
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "DataPass1" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let imageCollectionController = navigationController.topViewController as! ImageCollectionController
+            imageCollectionController.movieStore = movieStore
+        }
     }
     
     override func didReceiveMemoryWarning() {
