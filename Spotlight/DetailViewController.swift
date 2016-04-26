@@ -31,6 +31,17 @@ class DetailViewController: UIViewController, CNContactPickerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let youtubeLink:String = "https://www.youtube.com/embed/"
+        let youtubeID: String = "SUXWAEX2jlg"
+        let finalLink: String = youtubeLink+youtubeID
+        print(finalLink)
+        let embedVid: NSString = "<iframe width=375 height=240 src=\(finalLink) frameborder=50 allowfullscreen></iframe>"
+        print(embedVid)
+        trailerVid.scrollView.scrollEnabled = false;
+        trailerVid.scrollView.bounces = false;
+        self.trailerVid.loadHTMLString(embedVid as String, baseURL: nil)
+
+
         NSOperationQueue.mainQueue().addOperationWithBlock {
             self.movieTitle.text = self.movie.title
             self.movieYear.text = String(self.movie.year)
@@ -38,16 +49,7 @@ class DetailViewController: UIViewController, CNContactPickerDelegate
             self.movieReleaseDate.text = self.movie.releaseDate
             self.movieRating.text = String(self.movie.criticsRating)
         }
-        let youtubeLink:String = "https://www.youtube.com/embed/"
-        let youtubeID: String = "7d_jQycdQGo"
-        let finalLink: String = youtubeLink+youtubeID
-        print(finalLink)
-        let embedVid: NSString = "<iframe width=375 height=229 src=\(finalLink) frameborder=50 allowfullscreen></iframe>"
-        print(embedVid)
-        self.trailerVid.loadHTMLString(embedVid as String, baseURL: nil)
-        trailerVid.scrollView.scrollEnabled = false;
-        trailerVid.scrollView.bounces = false;
-        //let vidWidth = trailerVid.wid
+                //let vidWidth = trailerVid.wid
         //let vidHeight = trailerVid.height
 
     }
@@ -55,11 +57,11 @@ class DetailViewController: UIViewController, CNContactPickerDelegate
     @IBAction func recommendButton(sender: UIButton) {
         let textToShare = "I would want you to check this movie out! Take a look: https://www.youtube.com/watch?v=7d_jQycdQGo"
         let shareText = [textToShare]
-        let activityVC = UIActivityViewController(activityItems: shareText, applicationActivities: nil)
+        let activityshare = UIActivityViewController(activityItems: shareText, applicationActivities: nil)
             
-            activityVC.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeAddToReadingList]
+            activityshare.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeAddToReadingList, UIActivityTypeOpenInIBooks]
             
-            self.presentViewController(activityVC, animated: true, completion: nil)
+            self.presentViewController(activityshare, animated: true, completion: nil)
     }
     
 }

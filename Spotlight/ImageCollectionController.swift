@@ -18,6 +18,9 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let logo = UIImage(named: "Spotlight logo.png")
+        let imageView = UIImageView(image:logo)
+        self.navigationItem.titleView = imageView
         collectionView.dataSource = movieDataSource
         collectionView.delegate = self
         movieStore.fetchRecentPhotos() {
