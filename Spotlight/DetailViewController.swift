@@ -35,10 +35,11 @@ class DetailViewController: UIViewController, CNContactPickerDelegate
         let youtubeID: String = "SUXWAEX2jlg"
         let finalLink: String = youtubeLink+youtubeID
         print(finalLink)
-        let embedVid: NSString = "<iframe width=375 height=240 src=\(finalLink) frameborder=50 allowfullscreen></iframe>"
+        let embedVid: NSString = "<iframe width=360 height=219.375 src=\(finalLink) frameborder=50 allowfullscreen></iframe>"
         print(embedVid)
         trailerVid.scrollView.scrollEnabled = false;
         trailerVid.scrollView.bounces = false;
+        //trailerVid.scalesPageToFit = true;
         self.trailerVid.loadHTMLString(embedVid as String, baseURL: nil)
 
 
@@ -46,8 +47,9 @@ class DetailViewController: UIViewController, CNContactPickerDelegate
             self.movieTitle.text = self.movie.title
             self.movieYear.text = String(self.movie.year)
             self.movieSynposis.text = self.movie.synopsis
-            self.movieReleaseDate.text = self.movie.releaseDate
-            self.movieRating.text = String(self.movie.criticsRating)
+            self.movieReleaseDate.text = ("Release Date: ")+String(self.movie.releaseDate)
+            self.movieRating.text = String(self.movie.criticsRating) + ("%")
+
         }
                 //let vidWidth = trailerVid.wid
         //let vidHeight = trailerVid.height
