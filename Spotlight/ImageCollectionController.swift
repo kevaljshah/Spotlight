@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageCollectionController: UIViewController, UICollectionViewDelegate
+class ImageCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 {
     var movieStore: MovieStore!
  
@@ -23,7 +23,7 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate
         self.navigationItem.titleView = imageView
         collectionView.dataSource = movieDataSource
         collectionView.delegate = self
-        movieStore.fetchRecentPhotos() {
+        movieStore.fetchRecentMovies() {
             (movieResult) -> Void in
             NSOperationQueue.mainQueue().addOperationWithBlock() {
                 switch movieResult {
@@ -39,6 +39,21 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate
         
         }
         
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let cellSpacing = CGFloat(2) //Define the space between each cell
+        let leftRightMargin = CGFloat(5) //If defined in Interface Builder for "Section Insets"
+        let numColumns = CGFloat(3) //The total number of columns you want
+        
+        let totalCellSpace = cellSpacing * (numColumns - 1)
+        let screenWidth = UIScreen.mainScreen().bounds.width
+        let screenHeight = UIScreen.mainScreen().bounds.height
+
+        let width = (screenWidth - leftRightMargin - totalCellSpace) / numColumns
+        let height = CGFloat(190 * (screenHeight/667.0)) //whatever height you want
+        
+        return CGSizeMake(width, height);
     }
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {

@@ -9,27 +9,19 @@
 import UIKit
 
 class Movie {
-    let title: String
-    let year: Int
-    let imageURL: NSURL
-    let releaseDate: String
-    let criticsRating: Int
-    let synopsis: String
-    var image: UIImage?
+    let id: Int
+    let posterpath: String
+    var image: UIImage!
     
-    init(title: String, year: Int, imageURL: NSURL, releaseDate: String, criticsRating: Int, synopsis: String)
+    init(id: Int, posterpath: String)
     {
-        self.title = title
-        self.year = year
-        self.imageURL = imageURL
-        self.releaseDate = releaseDate
-        self.criticsRating = criticsRating
-        self.synopsis = synopsis
+        self.id = id
+        self.posterpath = posterpath
     }
 }
 
 extension Movie: Equatable {}
 
 func == (lhs: Movie, rhs: Movie) -> Bool {
-    return lhs.title == rhs.title
+    return lhs.id == rhs.id
 }

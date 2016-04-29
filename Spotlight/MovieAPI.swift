@@ -13,6 +13,16 @@ enum MovieResult {
     case Failure(ErrorType)
 }
 
+enum MovieDetailsResult {
+    case Success(MovieDetails)
+    case Failure(ErrorType)
+}
+
+enum MovieRatingsResult {
+    case Success(MovieRatings)
+    case Failure(ErrorType)
+}
+
 enum MovieError: ErrorType {
     case InvalidJSONData
 }
@@ -20,43 +30,33 @@ enum MovieError: ErrorType {
 struct MovieAPI {
     
     
-    private static func tomatoesFromJSONObject(json: [String : AnyObject]) -> Movie? {
-        guard let title = json["title"] as? String,
-            year = json["year"] as? Int,
-            url = json["posters"]!["original"] as? String,
-            imageURL = NSURL(string: url),
-            releaseDate = json["release_dates"]!["theater"] as? String,
-            criticsRating = json["ratings"]!["critics_score"] as? Int,
-            synopsis = json["synopsis"] as? String
+    private static func moviesFromJSONObject(json: [String : AnyObject]) -> Movie? {
+        guard let id = json["id"] as? Int,
+            posterpath = json["poster_path"] as? String
             else {
                 //Don't have enough information to construct a Title
                 return nil
         }
         //print(dateFormatter.dateFromString(json["release_dates"]!["theater"]))
         //print(json["ratings"]!["critics_score"])
-        return Movie(title: title, year: year, imageURL: imageURL, releaseDate: releaseDate, criticsRating: criticsRating, synopsis: synopsis)
-        
+        return Movie(id: id, posterpath: posterpath)
     }
     
-    static func tomatoesFromJSONData(data: NSData) -> MovieResult {
+    static func moviesFromJSONData(data: NSData) -> MovieResult {
         do {
             let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
             guard let jsonDictionary = jsonObject as? [NSObject: AnyObject],
-                moviesArray = jsonDictionary["movies"] as? [[String: AnyObject]] else {
+                moviesArray = jsonDictionary["results"] as? [[String: AnyObject]] else {
                     //The JSON Structure doesn't match our expectations
                     return .Failure(MovieError.InvalidJSONData)
             }
-            print("Hello")
             var finalTomatoes = [Movie]()
             for movieJSON in moviesArray {
-                if let movies = tomatoesFromJSONObject(movieJSON) {
+                if let movies = moviesFromJSONObject(movieJSON) {
                     finalTomatoes.append(movies)
                 }
             }
-            
-            print(finalTomatoes.count)
-            print(moviesArray.count)
-            
+
             if finalTomatoes.count == 0 && moviesArray.count > 0 {
                 //We weren't able to parse any of the movies
                 //Maybe the JSON format for photos has changed
@@ -69,5 +69,68 @@ struct MovieAPI {
         catch let error {
             return .Failure(error)
         }
+    }
+    
+    static func movieDetailsJSONData(data: NSData) -> MovieDetailsResult {
+        do {
+            let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            print(jsonObject)
+            guard let jsonDictionary = jsonObject as? [NSObject: AnyObject],
+                      trailers = jsonDictionary["trailers"]!["youtube"] as? [[NSObject: AnyObject]]
+                else {
+                    //The JSON Structure doesn't match our expectations
+                    return .Failure(MovieError.InvalidJSONData)
+            }
+            
+            var youtubeLink: String!
+            
+            guard let id = jsonDictionary["id"] as? Int,
+                      posterpath = jsonDictionary["poster_path"] as? String,
+                      imdb_id = jsonDictionary["imdb_id"] as? String,
+                      original_title = jsonDictionary["original_title"] as? String,
+                      overview = jsonDictionary["overview"] as? String,
+                      release_date = jsonDictionary["release_date"] as? String
+            else {
+                return .Failure(MovieError.InvalidJSONData)
+            }
+            for youtubeTrailers in trailers {
+                youtubeLink = youtubeTrailers["source"] as? String
+            }
+            
+            let finalMovieDetails = MovieDetails(id: id, posterpath: posterpath, imdb_id: imdb_id, original_title: original_title, overview: overview, release_date: release_date, youtubeLink: youtubeLink)
+            
+            print(finalMovieDetails)
+            
+            return .Success(finalMovieDetails)
+        }
+        catch let error {
+            return .Failure(error)
+        }
+    }
+    
+     static func movieRatingsFromJSONData(data: NSData) -> MovieRatingsResult {
+        do {
+            let jsonObject: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+            guard let jsonDictionary = jsonObject as? [NSObject: AnyObject]
+            else {
+                    //The JSON Structure doesn't match our expectations
+                    return .Failure(MovieError.InvalidJSONData)
+            }
+            
+            guard let imdb_id = jsonDictionary["imdbID"] as? String,
+                imdbRating = jsonDictionary["imdbRating"] as? String,
+                tomatoRating = jsonDictionary["tomatoRating"] as? String,
+                metascore = jsonDictionary["Metascore"] as? String
+                else {
+                    return .Failure(MovieError.InvalidJSONData)
+            }
+        let finalMovieRatings = MovieRatings(imdb_id: imdb_id, imdbRating: imdbRating, tomatoRating: tomatoRating, metascore: metascore)
+        
+        return .Success(finalMovieRatings)
+        }
+        catch let error {
+            return .Failure(error)
+        }
+        
     }
 }

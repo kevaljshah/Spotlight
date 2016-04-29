@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieStore.fetchRecentPhotos() {
+        movieStore.fetchRecentMovies() {
             (movieResult) -> Void in
             
             switch movieResult {
