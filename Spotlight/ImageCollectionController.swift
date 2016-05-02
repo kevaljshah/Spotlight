@@ -16,6 +16,15 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate, UIC
     
     let movieDataSource = MovieDataSource()
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: ""), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage(named: "")
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.backItem?.title = nil
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let logo = UIImage(named: "Spotlight logo.png")
@@ -80,6 +89,9 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate, UIC
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems()?.first {
                 let movie = movieDataSource.movies[selectedIndexPath.row]
                 let detailViewController = segue.destinationViewController as! DetailViewController
+                let backItem = UIBarButtonItem()
+                backItem.title = " "
+                navigationItem.backBarButtonItem = backItem
                 detailViewController.movieStore = movieStore
                 detailViewController.movie = movie
             }

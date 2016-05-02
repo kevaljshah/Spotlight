@@ -9,76 +9,112 @@
 import UIKit
 import ContactsUI
 
-class DetailViewController: UIViewController, CNContactPickerDelegate
+class DetailViewController: UIViewController, CNContactPickerDelegate, UICollectionViewDelegate
 {
     @IBOutlet var trailerVid: UIWebView!
     @IBOutlet var buttonText: UIButton!
-    var count: Int!
-    
-    var movie: Movie!    
-    var movieStore: MovieStore!
-    
     @IBOutlet var movieTitle: UILabel!
     @IBOutlet var movieSynposis: UITextView!
     @IBOutlet var movieReleaseDate: UILabel!
-    
     @IBOutlet var imdbRating: UILabel!
     @IBOutlet var tomatoesRating: UILabel!
     @IBOutlet var metaScore: UILabel!
+    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var imageView: UIImageView!
     
+    var count: Int!
+    var movie: Movie!
+    var movieStore: MovieStore!
+    var youtubeVideo: String!
+    
+    let suggestionDataSource = SuggestionDataSource()
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-            self.movieStore.fetchDetailsForMovie(self.movie) {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+        self.navigationController?.navigationBar.backItem?.title = nil
+        collectionView.dataSource = suggestionDataSource
+        collectionView.delegate = self
+        movieStore.fetchDetailsForMovie(movie) {
              (movieDetailsResult) -> Void in
-                switch movieDetailsResult {
+        
+            switch movieDetailsResult {
                 case let .Success(movieDetail):
                     print("Successfully found \(movieDetail.id) recent photos.")
-                    self.movieStore.fetchRatingsForMovie(movieDetail) {
-                        (movieRatingResult) -> Void in
-                        switch movieRatingResult {
-                            case let .Success(movieRating):
-                                NSOperationQueue.mainQueue().addOperationWithBlock {
-                                    let youtubeLink:String = "https://www.youtube.com/embed/"
-                                    let youtubeID = movieDetail.youtubeLink
-                                    let finalLink: String = youtubeLink+youtubeID
-                                    print(finalLink)
-                                    let embedVid: NSString = "<iframe width=360 height=219.375 src=\(finalLink) frameborder=50 allowfullscreen></iframe>"
-                                    print(embedVid)
-                                    self.trailerVid.scrollView.scrollEnabled = false;
-                                    self.trailerVid.scrollView.bounces = false;
-                                    //trailerVid.scalesPageToFit = true;
-                                    self.trailerVid.loadHTMLString(embedVid as String, baseURL: nil)
-                                    
-                                    self.navigationItem.title = movieDetail.original_title
-                                    
-                                    self.movieTitle.text = movieDetail.original_title
-                                    self.movieSynposis.text = movieDetail.overview
-                                    self.movieReleaseDate.text = movieDetail.release_date
-                                    self.imdbRating.text = movieRating.imdbRating
-                                    self.tomatoesRating.text = movieRating.tomatoRating
-                                    self.metaScore.text = movieRating.metascore
+                
+                self.movieStore.fetchImageForMovieDetails(movieDetail) {
+                        (result) -> Void in
+                        self.imageView.image = movieDetail.image
+                        print(movieDetail.image)
+                    }
+                self.movieStore.fetchSuggestionForMovie(movieDetail) { (movieResult) -> Void in
+                NSOperationQueue.mainQueue().addOperationWithBlock() {
+                        switch movieResult {
+                        case let .Success(movies):
+                                print("Successfully found \(movies.count) films")
+                            self.suggestionDataSource.movies = movies
+                        case let .Failure(error):
+                                print("\(error)")
+                            self.suggestionDataSource.movies.removeAll()
+                        }
+                        self.collectionView.reloadSections(NSIndexSet(index: 0))
+                }
+                }
+                    
+                self.movieStore.fetchRatingsForMovie(movieDetail) { (movieRatingResult) -> Void in
+                            switch movieRatingResult {
+                                case let .Success(movieRating):
+                                         NSOperationQueue.mainQueue().addOperationWithBlock {
+                                          
+                                            self.navigationItem.title = nil
+                                            self.movieTitle.text = movieDetail.original_title
+                                            self.movieSynposis.text = movieDetail.overview
+                                            self.movieReleaseDate.text = movieDetail.release_date
+                                            self.imdbRating.text = movieRating.imdbRating
+                                            self.tomatoesRating.text = movieRating.tomatoRating
+                                            self.metaScore.text = movieRating.metascore
+                                            self.youtubeVideo = movieDetail.youtubeLink
                             }
-                            case let .Failure(error):
-                            print("Error fetching recent photos: \(error)")
+                                case let .Failure(error):
+                                        print("Error fetching xyz recent photos: \(error)")
                         }
                     }
                 case let .Failure(error):
-                    print("Error fetching recent photos: \(error)")
-                }
+                    print("Error fetchingggg recent photos: \(error)")
             }
-            //self.movieTitle.text = self.movie.title
-            //self.movieYear.text = String(self.movie.year)
-            //self.movieSynposis.text = self.movie.synopsis
-            //self.movieReleaseDate.text = ("Release Date: ")+String(self.movie.releaseDate)
-            //self.movieRating.text = String(self.movie.criticsRating) + ("%")
-
-
-                //let vidWidth = trailerVid.wid
-        //let vidHeight = trailerVid.height
-
+        }
+    
     }
 
+    
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let movie = suggestionDataSource.movies[indexPath.row]
+        //Download the image data, which could take some time
+        movieStore.fetchImageForMovie(movie) {
+            (result) -> Void in
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock() {
+                
+                let movieIndex = self.suggestionDataSource.movies.indexOf(movie)!
+                let movieIndexPath = NSIndexPath(forRow: movieIndex, inSection: 0)
+                
+                if let cell = self.collectionView.cellForItemAtIndexPath(movieIndexPath) as? SuggestionCollectionViewCell {
+                    cell.updateWithImage(movie.image)
+                }
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "DataPass3" {
+                let webViewController = segue.destinationViewController as! WebViewController
+                webViewController.youtubeVideo = youtubeVideo
+            }
+        }
     
     @IBAction func recommendButton(sender: UIButton) {
         let textToShare = "I would want you to check this movie out! Take a look: https://www.youtube.com/watch?v=7d_jQycdQGo"

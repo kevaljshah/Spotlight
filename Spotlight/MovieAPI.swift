@@ -37,6 +37,7 @@ struct MovieAPI {
                 //Don't have enough information to construct a Title
                 return nil
         }
+        print("Yay")
         //print(dateFormatter.dateFromString(json["release_dates"]!["theater"]))
         //print(json["ratings"]!["critics_score"])
         return Movie(id: id, posterpath: posterpath)
@@ -81,11 +82,14 @@ struct MovieAPI {
                     //The JSON Structure doesn't match our expectations
                     return .Failure(MovieError.InvalidJSONData)
             }
-            
+
             var youtubeLink: String!
+            var finalYoutubeLink: String!
+            
+            var posterpath1: String!
+            var posterpath: String!
             
             guard let id = jsonDictionary["id"] as? Int,
-                      posterpath = jsonDictionary["poster_path"] as? String,
                       imdb_id = jsonDictionary["imdb_id"] as? String,
                       original_title = jsonDictionary["original_title"] as? String,
                       overview = jsonDictionary["overview"] as? String,
@@ -93,11 +97,28 @@ struct MovieAPI {
             else {
                 return .Failure(MovieError.InvalidJSONData)
             }
+            
+            
             for youtubeTrailers in trailers {
                 youtubeLink = youtubeTrailers["source"] as? String
             }
             
-            let finalMovieDetails = MovieDetails(id: id, posterpath: posterpath, imdb_id: imdb_id, original_title: original_title, overview: overview, release_date: release_date, youtubeLink: youtubeLink)
+            if youtubeLink == nil {
+                finalYoutubeLink = "Oi1BcouEmio"
+            }
+            else {
+                finalYoutubeLink = youtubeLink
+            }
+            
+            posterpath1 = jsonDictionary["backdrop_path"] as? String
+            if posterpath1 == nil {
+                posterpath = jsonDictionary["poster_path"] as? String
+            }
+            else {
+                posterpath = posterpath1
+            }
+            
+            let finalMovieDetails = MovieDetails(id: id, posterpath: posterpath, imdb_id: imdb_id, original_title: original_title, overview: overview, release_date: release_date, youtubeLink: finalYoutubeLink)
             
             print(finalMovieDetails)
             
