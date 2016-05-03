@@ -101,7 +101,28 @@ class MovieStore {
         }
         task.resume()
     }
-
+    
+    func searchForMovie(searchString: String, completion: (MovieResult) -> Void)
+    {
+        let url = "http://api.themoviedb.org/3/search/movie?query=\(searchString)&api_key=abef900e4db0bbaa6d4eb23f760ba53a"
+        print(url)
+        let NSURLValue = NSURLComponents(string: url)!
+        let request = NSURLRequest(URL: NSURLValue.URL!)
+        let task = session.dataTaskWithRequest(request) {
+            (data, response, error) -> Void in
+            let result = self.processSearchMoviesRequest(data: data, error: error)
+            completion(result)
+        }
+        task.resume()
+    }
+    
+    func processSearchMoviesRequest(data data: NSData?, error: NSError?) -> MovieResult {
+        guard let jsonData = data else {
+            return .Failure(error!)
+        }
+        
+        return MovieAPI.moviesFromJSONData(jsonData)
+    }
     
     func fetchImageForMovie(movie: Movie, completion: (ImageResult) -> Void) {
         

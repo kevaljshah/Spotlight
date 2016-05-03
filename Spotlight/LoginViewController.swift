@@ -31,7 +31,9 @@ class LoginViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DataPass1" {
-            let navigationController = segue.destinationViewController as! UINavigationController
+           // let navigationController = segue.destinationViewController as! UINavigationController
+            let tabBarController = segue.destinationViewController as! UITabBarController
+            let navigationController = tabBarController.parentViewController as! UINavigationController
             let imageCollectionController = navigationController.topViewController as! ImageCollectionController
             imageCollectionController.movieStore = movieStore
         }

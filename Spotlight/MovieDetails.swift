@@ -27,7 +27,6 @@ class MovieDetails {
         self.overview = overview
         self.release_date = release_date
         self.youtubeLink = youtubeLink
-        
     }
 }
 

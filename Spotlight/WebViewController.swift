@@ -29,6 +29,7 @@ class WebViewController: UIViewController
         let url = NSURL(string: "https://www.youtube.com/embed/\(youtubeVideo)?autoplay=1")
         let urlRequest = NSURLRequest(URL: url!)
         webView.mediaPlaybackRequiresUserAction = false
+        webView.allowsInlineMediaPlayback = true
         webView.loadRequest(urlRequest)
         
     }
