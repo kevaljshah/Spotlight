@@ -27,6 +27,7 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     var movie: Movie!
     var movieStore: MovieStore!
     var youtubeVideo: String!
+    var watchListArray = [Int]()
     
     let suggestionDataSource = SuggestionDataSource()
     
@@ -132,10 +133,12 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     
     @IBAction func addToWatchlist(sender: AnyObject)
     {
-       
         movie.watchList = true
         print(movie.id)
-        
+        watchListArray.append(movie.id)
+        print(watchListArray)
+        watchListButton.setTitle("Added to WatchList", forState: .Normal)
+
     }
     
     @IBAction func recommendButton(sender: UIButton)

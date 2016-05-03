@@ -22,6 +22,10 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "")
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.backItem?.title = nil
+        
+        let logoIcon: UIImage = UIImage(named: "SpotlightIcon.png")!
+        self.navigationItem.titleView = UIImageView(image: logoIcon)
+        
     }
     
     

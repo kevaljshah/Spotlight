@@ -30,6 +30,10 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "")
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.backItem?.title = nil
+        
+        let logoIcon: UIImage = UIImage(named: "SpotlightIcon.png")!
+        self.navigationItem.titleView = UIImageView(image: logoIcon)
+        
     }
     
     
@@ -37,6 +41,7 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
         super.viewDidLoad()
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
+        
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {

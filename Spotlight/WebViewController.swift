@@ -20,6 +20,10 @@ class WebViewController: UIViewController
     
     override func viewWillAppear(animated: Bool) {
         print(youtubeVideo)
+        
+        let logoIcon: UIImage = UIImage(named: "SpotlightIcon.png")!
+        self.navigationItem.titleView = UIImageView(image: logoIcon)
+        
     }
     
     override func viewDidLoad() {
