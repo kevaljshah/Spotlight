@@ -148,7 +148,7 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     
     @IBAction func recommendButton(sender: UIButton)
     {
-        let textToShare = "I would want you to check this movie out! Take a look: https://www.youtube.com/watch?v=\(youtubeVideo! as String)"
+        let textToShare = "I would want you to check this movie out! Take a look at \(movieTitle.text! as String). YouTube Trailer: https://www.youtube.com/watch?v=\(youtubeVideo! as String)"
         let shareText = [textToShare]
         let activityshare = UIActivityViewController(activityItems: shareText, applicationActivities: nil)
             
