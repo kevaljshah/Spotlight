@@ -27,7 +27,8 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     var movie: Movie!
     var movieStore: MovieStore!
     var youtubeVideo: String!
-    var watchListArray = [Int]()
+    var watchListArray = [WatchList]()
+    var index: Int = 0
     
     let suggestionDataSource = SuggestionDataSource()
     
@@ -94,7 +95,7 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         
-        let movie = suggestionDataSource.movies[indexPath.row]
+        var movie = suggestionDataSource.movies[indexPath.row]
         //Download the image data, which could take some time
         movieStore.fetchImageForMovie(movie) {
             (result) -> Void in
@@ -133,8 +134,8 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     
     @IBAction func addToWatchlist(sender: AnyObject)
     {
-        movie.watchList = true
-        print(movie.image)
+        
+        
         watchListButton.setTitle("Added to WatchList", forState: .Normal)
 
     }
