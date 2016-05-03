@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Spotlight/DetailViewController.swift"
-            timestampString = "483990235.909836"
+            timestampString = "483993977.992989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "addToWatchlist(_:)"
             landmarkType = "5">
          </BreakpointContent>

@@ -98,7 +98,13 @@
         <scene sceneID="Bxb-e0-8IF">
             <objects>
                 <navigationController id="5b0-Kz-8ii" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Top Rated" image="Feed" selectedImage="FeedSelect" id="arU-MV-5Hr"/>
+                    <tabBarItem key="tabBarItem" title="Top Rated" image="Feed" selectedImage="FeedSelect" id="arU-MV-5Hr">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.95294117647058818" green="0.34901960784313724" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FX6-qN-uv9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -565,7 +571,13 @@
         <scene sceneID="x9B-XI-XnC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z6R-Up-h1c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="Search" selectedImage="SearchSelect" id="HrZ-BN-aVi"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="Search" selectedImage="SearchSelect" id="HrZ-BN-aVi">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.95294117647058818" green="0.34901960784313724" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="I9O-GD-aOx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -676,7 +688,13 @@
         <scene sceneID="R0H-yL-7Nw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pIR-zr-RP3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Watchlist" image="Spotlight" selectedImage="SpotlightSelect" id="Ade-mn-Dit"/>
+                    <tabBarItem key="tabBarItem" title="Watchlist" image="Spotlight" selectedImage="SpotlightSelect" id="Ade-mn-Dit">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.95294117647058818" green="0.34901960784313724" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KGV-cc-5IW">
