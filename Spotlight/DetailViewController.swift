@@ -134,9 +134,7 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     @IBAction func addToWatchlist(sender: AnyObject)
     {
         movie.watchList = true
-        print(movie.id)
-        watchListArray.append(movie.id)
-        print(watchListArray)
+        print(movie.image)
         watchListButton.setTitle("Added to WatchList", forState: .Normal)
 
     }
