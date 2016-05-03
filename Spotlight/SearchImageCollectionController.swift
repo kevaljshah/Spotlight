@@ -17,7 +17,7 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
     var movieStore: MovieStore!
     var searchString: String = ""
     
-    let movieDataSource = MovieDataSource()
+    let searchDataSource = SearchDataSource()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,7 +38,7 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
         
         searchString = searchBar.text! as String
         print(searchString)
-        searchCollectionView.dataSource = movieDataSource
+        searchCollectionView.dataSource = searchDataSource
         searchCollectionView.delegate = self
         movieStore.searchForMovie(searchString) {
                                   (movieResult) -> Void in
@@ -46,9 +46,9 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
                 switch movieResult {
                 case let .Success(movies):
                     print("Successfully found \(movies.count) search movies.")
-                    self.movieDataSource.movies = movies
+                    self.searchDataSource.movies = movies
                 case let .Failure(error):
-                    self.movieDataSource.movies.removeAll()
+                    self.searchDataSource.movies.removeAll()
                     print("Error fetching search movies: \(error)")
                 }
                 self.searchCollectionView.reloadSections(NSIndexSet(index: 0))
@@ -75,14 +75,14 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         
-        let movie = movieDataSource.movies[indexPath.row]
+        let movie = searchDataSource.movies[indexPath.row]
         //Download the image data, which could take some time
         movieStore.fetchImageForMovie(movie) {
             (result) -> Void in
             
             NSOperationQueue.mainQueue().addOperationWithBlock() {
                 
-                let movieIndex = self.movieDataSource.movies.indexOf(movie)!
+                let movieIndex = self.searchDataSource.movies.indexOf(movie)!
                 let movieIndexPath = NSIndexPath(forRow: movieIndex, inSection: 0)
                 
                 if let cell = self.searchCollectionView.cellForItemAtIndexPath(movieIndexPath) as? SearchCollectionViewCell {
@@ -95,13 +95,14 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DataPass4" {
             if let selectedIndexPath = searchCollectionView.indexPathsForSelectedItems()?.first {
-                let movie = movieDataSource.movies[selectedIndexPath.row]
+                let movieSelected = searchDataSource.movies[selectedIndexPath.row]
                 let detailViewController = segue.destinationViewController as! DetailViewController
                 let backItem = UIBarButtonItem()
                 backItem.title = " "
                 navigationItem.backBarButtonItem = backItem
+                print("Data Passed")
                 detailViewController.movieStore = movieStore
-                detailViewController.movie = movie
+                detailViewController.movie = movieSelected
             }
         }
     }

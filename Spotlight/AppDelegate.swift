@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
        // let rootViewController = window!.rootViewController as! LoginViewController
         //rootViewController.movieStore = MovieStore()
+        let rootViewController = window!.rootViewController as! SearchImageCollectionController
+        rootViewController.movieStore = MovieStore()
         return true
     }
 

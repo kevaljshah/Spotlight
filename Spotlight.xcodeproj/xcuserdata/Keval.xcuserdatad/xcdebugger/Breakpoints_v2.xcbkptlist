@@ -122,12 +122,12 @@
                   moduleName = "Spotlight"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Keval/Desktop/Spotlight/Spotlight/Spotlight/SearchImageCollectionController.swift"
-                  timestampString = "483938180.994425"
+                  timestampString = "483958282.488076"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
                   endingLineNumber = "43"
-                  offsetFromSymbolStart = "912">
+                  offsetFromSymbolStart = "953">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -137,12 +137,12 @@
                   moduleName = "Spotlight"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Keval/Desktop/Spotlight/Spotlight/Spotlight/SearchImageCollectionController.swift"
-                  timestampString = "483938180.994525"
+                  timestampString = "483958282.488296"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
                   endingLineNumber = "45"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "30">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -186,12 +186,12 @@
                   moduleName = "Spotlight"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Keval/Desktop/Spotlight/Spotlight/Spotlight/SearchImageCollectionController.swift"
-                  timestampString = "483938180.99521"
+                  timestampString = "483958282.490223"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "45"
                   endingLineNumber = "45"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "30">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -201,14 +201,46 @@
                   moduleName = "Spotlight"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Keval/Desktop/Spotlight/Spotlight/Spotlight/SearchImageCollectionController.swift"
-                  timestampString = "483938180.995321"
+                  timestampString = "483958282.490578"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "46"
                   endingLineNumber = "46"
-                  offsetFromSymbolStart = "32">
+                  offsetFromSymbolStart = "30">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotlight/DetailViewController.swift"
+            timestampString = "483958282.328786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "addToWatchlist(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Spotlight/DetailViewController.swift"
+            timestampString = "483958282.328786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "addToWatchlist(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

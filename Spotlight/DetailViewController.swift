@@ -21,6 +21,7 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     @IBOutlet var metaScore: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var watchListButton: UIButton!
     
     var count: Int!
     var movie: Movie!
@@ -114,13 +115,29 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
                 let webViewController = segue.destinationViewController as! WebViewController
                 webViewController.youtubeVideo = youtubeVideo
             }
+        if segue.identifier == "DataPass5" {
+            if let selectedIndexPath = collectionView.indexPathsForSelectedItems()?.first {
+                let movieSelected = suggestionDataSource.movies[selectedIndexPath.row]
+                let detailViewController = segue.destinationViewController as! DetailViewController
+                let backItem = UIBarButtonItem()
+                backItem.title = " "
+                navigationItem.backBarButtonItem = backItem
+                print("Data Passed")
+                detailViewController.movieStore = movieStore
+                detailViewController.movie = movieSelected
+            }
         }
+
+    }
     
     @IBAction func addToWatchlist(sender: AnyObject)
     {
-        
+       
+        movie.watchList = true
+        print(movie.id)
         
     }
+    
     @IBAction func recommendButton(sender: UIButton)
     {
         let textToShare = "I would want you to check this movie out! Take a look: https://www.youtube.com/watch?v=\(youtubeVideo! as String)"

@@ -32,7 +32,8 @@ struct MovieAPI {
     
     private static func moviesFromJSONObject(json: [String : AnyObject]) -> Movie? {
         guard let id = json["id"] as? Int,
-            posterpath = json["poster_path"] as? String
+            posterpath = json["poster_path"] as? String,
+            watchList = false as? Bool
             else {
                 //Don't have enough information to construct a Title
                 return nil
@@ -40,7 +41,7 @@ struct MovieAPI {
         print("Yay")
         //print(dateFormatter.dateFromString(json["release_dates"]!["theater"]))
         //print(json["ratings"]!["critics_score"])
-        return Movie(id: id, posterpath: posterpath)
+        return Movie(id: id, posterpath: posterpath,watchList: watchList)
     }
     
     static func moviesFromJSONData(data: NSData) -> MovieResult {
