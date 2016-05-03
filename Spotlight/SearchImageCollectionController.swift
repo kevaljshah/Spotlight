@@ -36,6 +36,12 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
         
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        let fourthTab = self.tabBarController?.viewControllers?[2] as? UINavigationController
+        let fifthTab = fourthTab?.topViewController as? WatchListCollectionView
+        fifthTab?.watchListStore = watchListStore
+        print(fourthTab)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

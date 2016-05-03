@@ -89,6 +89,19 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
     
+    
+    override func viewWillDisappear(animated: Bool) {
+        let secondTab = self.tabBarController?.viewControllers?[1] as? UINavigationController
+        let thirdTab = secondTab?.topViewController as? SearchImageCollectionController
+        thirdTab?.watchListStore = watchListStore
+        
+        
+        let fourthTab = self.tabBarController?.viewControllers?[2] as? UINavigationController
+        let fifthTab = fourthTab?.topViewController as? WatchListCollectionView
+        fifthTab?.watchListStore = watchListStore
+        print(fourthTab)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DataPass2" {
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems()?.first {
