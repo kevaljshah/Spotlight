@@ -18,9 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
        // let rootViewController = window!.rootViewController as! LoginViewController
         //rootViewController.movieStore = MovieStore()
-        let rootViewController = window!.rootViewController as! UINavigationController
-        let searchImageController = rootViewController.topViewController as! SearchImageCollectionController
-        searchImageController.movieStore = MovieStore()
+        //let rootViewController = window!.rootViewController as! LoginViewController
+        //let searchImageController = rootViewController.topViewController as! SearchImageCollectionController
+        let tabBarController = window!.rootViewController as! UITabBarController
+        tabBarController.selectedIndex = 0
+        let navigationController = tabBarController.selectedViewController as! UINavigationController
+        let imageCollectionController = navigationController.topViewController as! ImageCollectionController
+        imageCollectionController.movieStore = MovieStore()
         return true
     }
 

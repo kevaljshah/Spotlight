@@ -10,7 +10,9 @@ import UIKit
 
 class SearchImageCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate
 {
+
     
+    var movieStoreFromImage = MovieStore()
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var searchCollectionView: UICollectionView!
     
@@ -21,6 +23,9 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        movieStore = movieStoreFromImage
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: ""), forBarMetrics: UIBarMetrics.Default)
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "")
         self.navigationController?.navigationBar.translucent = true
