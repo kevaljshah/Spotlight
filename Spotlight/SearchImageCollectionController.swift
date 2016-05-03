@@ -11,7 +11,7 @@ import UIKit
 class SearchImageCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate
 {
 
-    
+    var watchListStore: WatchListStore!
     var movieStoreFromImage = MovieStore()
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var searchCollectionView: UICollectionView!
@@ -112,6 +112,7 @@ class SearchImageCollectionController: UIViewController, UICollectionViewDelegat
                 navigationItem.backBarButtonItem = backItem
                 print("Data Passed")
                 detailViewController.movieStore = movieStore
+                detailViewController.watchListStore = watchListStore
                 detailViewController.movie = movieSelected
             }
         }

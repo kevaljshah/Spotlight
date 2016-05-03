@@ -21,6 +21,7 @@ class MovieDataSource: NSObject, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! MovieCollectionViewCell
         
         let movie = movies[indexPath.row]
+        //print(movie.image)
         cell.updateWithImage(movie.image)
         return cell
     }

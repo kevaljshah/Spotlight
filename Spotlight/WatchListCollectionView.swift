@@ -1,21 +1,20 @@
 //
-//  ImageCollectionController.swift
+//  WatchListCollectionView.swift
 //  Spotlight
 //
-//  Created by Keval Shah on 4/12/16.
+//  Created by Akshay Iyer on 5/3/16.
 //  Copyright © 2016 Keval Shah. All rights reserved.
 //
 
 import UIKit
-
-class ImageCollectionController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+class WatchListCollectionView: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 {
-    var movieStore: MovieStore!
-    var watchListStore: WatchListStore!
- 
+    
     @IBOutlet var collectionView: UICollectionView!
     
-    let movieDataSource = MovieDataSource()
+    var watchListStore: WatchListStore!
+    var movieStore: MovieStore!
+    let watchListSource = WatchListDataSource()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -24,36 +23,15 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate, UIC
         self.navigationController?.navigationBar.translucent = true
         self.navigationController?.navigationBar.backItem?.title = nil
         
-        let logoIcon: UIImage = UIImage(named: "SpotlightIcon.png")!
+        let logoIcon: UIImage = UIImage(named: "Watchlist.png")!
         self.navigationItem.titleView = UIImageView(image: logoIcon)
-        
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let logo = UIImage(named: "Spotlight logo.png")
-        let imageView = UIImageView(image:logo)
-        self.navigationItem.titleView = imageView
-        collectionView.dataSource = movieDataSource
+        print(watchListStore.allItems.count)
+        collectionView.dataSource = watchListSource
         collectionView.delegate = self
-        movieStore.fetchRecentMovies() {
-            (movieResult) -> Void in
-            NSOperationQueue.mainQueue().addOperationWithBlock() {
-                switch movieResult {
-                case let .Success(movies):
-                    print("Successfully found \(movies.count) recent photos.")
-                    self.movieDataSource.movies = movies
-                case let .Failure(error):
-                    self.movieDataSource.movies.removeAll()
-                    print("Error fetching recent photos: \(error)")
-                }
-                self.collectionView.reloadSections(NSIndexSet(index: 0))
-            }
-        
+        watchListSource.watchListStore = watchListStore
+        collectionView.reloadSections(NSIndexSet(index: 0))
+
         }
-        
-    }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let cellSpacing = CGFloat(2) //Define the space between each cell
@@ -63,26 +41,27 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate, UIC
         let totalCellSpace = cellSpacing * (numColumns - 1)
         let screenWidth = UIScreen.mainScreen().bounds.width
         let screenHeight = UIScreen.mainScreen().bounds.height
-
+        
         let width = (screenWidth - leftRightMargin - totalCellSpace) / numColumns
         let height = CGFloat(190 * (screenHeight/667.0)) //whatever height you want
         
         return CGSizeMake(width, height);
     }
     
+    
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         
-        let movie = movieDataSource.movies[indexPath.row]
+        let movie = watchListStore.allItems[indexPath.row]
         //Download the image data, which could take some time
-        movieStore.fetchImageForMovie(movie) {
+        watchListStore.fetchImageForMovie(movie) {
             (result) -> Void in
             
             NSOperationQueue.mainQueue().addOperationWithBlock() {
                 
-                let movieIndex = self.movieDataSource.movies.indexOf(movie)!
+                let movieIndex = self.watchListSource.watchListStore.allItems.indexOf(movie)!
                 let movieIndexPath = NSIndexPath(forRow: movieIndex, inSection: 0)
                 
-                if let cell = self.collectionView.cellForItemAtIndexPath(movieIndexPath) as? MovieCollectionViewCell {
+                if let cell = self.collectionView.cellForItemAtIndexPath(movieIndexPath) as? WatchListCollectionViewCell {
                     cell.updateWithImage(movie.image)
                 }
             }
@@ -90,23 +69,19 @@ class ImageCollectionController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "DataPass2" {
+        if segue.identifier == "DataPass5" {
             if let selectedIndexPath = collectionView.indexPathsForSelectedItems()?.first {
-                let movie = movieDataSource.movies[selectedIndexPath.row]
+                let watchlist = watchListStore.allItems[selectedIndexPath.row]
                 let detailViewController = segue.destinationViewController as! DetailViewController
                 let backItem = UIBarButtonItem()
                 backItem.title = " "
                 navigationItem.backBarButtonItem = backItem
-                detailViewController.movieStore = movieStore
-                detailViewController.watchListStore = watchListStore
+                let movie = Movie(id: watchlist.id, posterpath: watchlist.posterpath)
                 detailViewController.movie = movie
-                let secondTab = self.tabBarController?.viewControllers?[1] as? UINavigationController
-                let thirdTab = secondTab?.topViewController as? SearchImageCollectionController
-                print(secondTab)
-                thirdTab!.watchListStore = watchListStore
-                thirdTab!.movieStore = movieStore
+                detailViewController.movieStore = movieStore
                 
             }
         }
     }
+    
 }

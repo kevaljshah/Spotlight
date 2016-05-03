@@ -2,7 +2,7 @@
 //  WebViewController.swift
 //  Spotlight
 //
-//  Created by Akshay Iyer on 5/1/16.
+//  Created by Keval Shah on 5/1/16.
 //  Copyright © 2016 Keval Shah. All rights reserved.
 //
 import UIKit

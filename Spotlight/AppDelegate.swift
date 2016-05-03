@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let movieStore = MovieStore()
+    let watchListStore = WatchListStore()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = tabBarController.selectedViewController as! UINavigationController
         let imageCollectionController = navigationController.topViewController as! ImageCollectionController
         imageCollectionController.movieStore = MovieStore()
+        imageCollectionController.watchListStore = WatchListStore()
         return true
     }
 

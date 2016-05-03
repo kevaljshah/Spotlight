@@ -12,13 +12,11 @@ class Movie {
     let id: Int
     let posterpath: String
     var image: UIImage!
-    var watchList: Bool
     
-    init(id: Int, posterpath: String, watchList: Bool)
+    init(id: Int, posterpath: String)
     {
         self.id = id
         self.posterpath = posterpath
-        self.watchList = watchList
     }
 }
 

@@ -26,10 +26,9 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     var count: Int!
     var movie: Movie!
     var movieStore: MovieStore!
+    var watchListStore: WatchListStore!
     var youtubeVideo: String!
-    var watchListArray = [WatchList]()
     var index: Int = 0
-    
     let suggestionDataSource = SuggestionDataSource()
     
 
@@ -47,7 +46,6 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
             switch movieDetailsResult {
                 case let .Success(movieDetail):
                     print("Successfully found \(movieDetail.id) recent photos.")
-                
                 self.movieStore.fetchImageForMovieDetails(movieDetail) {
                         (result) -> Void in
                         self.imageView.image = movieDetail.image
@@ -95,7 +93,7 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         
-        var movie = suggestionDataSource.movies[indexPath.row]
+        let movie = suggestionDataSource.movies[indexPath.row]
         //Download the image data, which could take some time
         movieStore.fetchImageForMovie(movie) {
             (result) -> Void in
@@ -126,6 +124,7 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
                 navigationItem.backBarButtonItem = backItem
                 print("Data Passed")
                 detailViewController.movieStore = movieStore
+                detailViewController.watchListStore = watchListStore
                 detailViewController.movie = movieSelected
             }
         }
@@ -134,10 +133,17 @@ class DetailViewController: UIViewController, CNContactPickerDelegate, UICollect
     
     @IBAction func addToWatchlist(sender: AnyObject)
     {
-        
-        
+        let movieID = movie.id
+        let movieposterpath = movie.posterpath
+        //let newitem = WatchList(id: movieID, posterpath: movieposterPath)
+        watchListStore.createItem(movieID, posterpath: movieposterpath)
         watchListButton.setTitle("Added to WatchList", forState: .Normal)
-
+        let secondTab = self.tabBarController?.viewControllers?[2] as? UINavigationController
+        let thirdTab = secondTab?.topViewController as? WatchListCollectionView
+        print(secondTab)
+        thirdTab!.watchListStore = watchListStore
+        thirdTab!.movieStore = movieStore
+        print(watchListStore.allItems.count)
     }
     
     @IBAction func recommendButton(sender: UIButton)
