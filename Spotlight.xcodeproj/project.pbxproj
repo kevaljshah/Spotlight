@@ -29,7 +29,6 @@
 		6EB8C83B1CD83D5700F4CD95 /* SearchImageCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB8C83A1CD83D5700F4CD95 /* SearchImageCollectionController.swift */; };
 		6EB8C83D1CD91BA200F4CD95 /* WatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB8C83C1CD91BA200F4CD95 /* WatchList.swift */; };
 		6EFDE19B1CBB460800248E9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFDE19A1CBB460800248E9D /* AppDelegate.swift */; };
-		6EFDE19D1CBB460800248E9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFDE19C1CBB460800248E9D /* LoginViewController.swift */; };
 		6EFDE1A21CBB460800248E9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EFDE1A11CBB460800248E9D /* Assets.xcassets */; };
 		6EFDE1A51CBB460800248E9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EFDE1A31CBB460800248E9D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -58,7 +57,6 @@
 		6EB8C83C1CD91BA200F4CD95 /* WatchList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchList.swift; sourceTree = "<group>"; };
 		6EFDE1971CBB460800248E9D /* Spotlight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotlight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EFDE19A1CBB460800248E9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6EFDE19C1CBB460800248E9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6EFDE1A11CBB460800248E9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EFDE1A41CBB460800248E9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6EFDE1A61CBB460800248E9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 				6EFDE19A1CBB460800248E9D /* AppDelegate.swift */,
 				5EC80C771CD8DF1D00FDE521 /* Main.storyboard */,
 				6EFDE1A31CBB460800248E9D /* LaunchScreen.storyboard */,
-				6EFDE19C1CBB460800248E9D /* LoginViewController.swift */,
 				5E0F976B1CCC631900CA9E52 /* Movie.swift */,
 				5E76D70D1CD3C715005663AB /* MovieDetails.swift */,
 				5E76D70B1CD3C706005663AB /* MovieRatings.swift */,
@@ -196,7 +193,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EFDE19D1CBB460800248E9D /* LoginViewController.swift in Sources */,
 				5E99EB4B1CD93AA10039C539 /* WatchListCollectionView.swift in Sources */,
 				5E76D70C1CD3C706005663AB /* MovieRatings.swift in Sources */,
 				6EB8C83B1CD83D5700F4CD95 /* SearchImageCollectionController.swift in Sources */,

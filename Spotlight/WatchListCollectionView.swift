@@ -77,6 +77,7 @@ class WatchListCollectionView: UIViewController, UICollectionViewDelegate, UICol
                 backItem.title = " "
                 navigationItem.backBarButtonItem = backItem
                 let movie = Movie(id: watchlist.id, posterpath: watchlist.posterpath)
+                detailViewController.watchListStore = watchListStore
                 detailViewController.movie = movie
                 detailViewController.movieStore = movieStore
                 

@@ -4,96 +4,9 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--LoginPageController-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController title="LoginPageController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Spotlight" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Spotlight Logo" translatesAutoresizingMaskIntoConstraints="NO" id="kw7-Cy-9CE">
-                                <rect key="frame" x="73" y="105" width="228" height="86"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FSQ-7b-l58">
-                                <rect key="frame" x="67" y="276" width="258" height="44"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCo-Aw-zMM">
-                                <rect key="frame" x="67" y="398" width="121" height="51"/>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.34901960780000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="MTo-cK-afs"/>
-                                    <constraint firstAttribute="height" constant="51" id="rr0-qU-obC"/>
-                                </constraints>
-                                <state key="normal" title="LOGIN">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="myH-UR-0sM" kind="show" identifier="DataPass1" id="wDJ-Vy-4gI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0h-b4-vWq">
-                                <rect key="frame" x="204" y="398" width="121" height="51"/>
-                                <color key="backgroundColor" red="0.95294117649999999" green="0.34901960780000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                <state key="normal" title="SIGN UP">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPt-jB-ltj">
-                                <rect key="frame" x="126" y="328" width="123" height="30"/>
-                                <state key="normal" title="Forgot Password?"/>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZtJ-bu-fPT">
-                                <rect key="frame" x="67" y="235" width="258" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="4Xv-UL-0nh"/>
-                                </constraints>
-                                <color key="textColor" red="0.95294117647058818" green="0.34901960784313724" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="lCo-Aw-zMM" firstAttribute="firstBaseline" secondItem="r0h-b4-vWq" secondAttribute="baseline" id="4oQ-pQ-iOB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZtJ-bu-fPT" secondAttribute="trailing" constant="34" id="5eb-2O-x7L"/>
-                            <constraint firstItem="NPt-jB-ltj" firstAttribute="top" secondItem="ZtJ-bu-fPT" secondAttribute="bottom" constant="49" id="P08-Dv-NOT"/>
-                            <constraint firstItem="FSQ-7b-l58" firstAttribute="leading" secondItem="ZtJ-bu-fPT" secondAttribute="leading" id="PfW-in-dgT"/>
-                            <constraint firstItem="r0h-b4-vWq" firstAttribute="leading" secondItem="lCo-Aw-zMM" secondAttribute="trailing" constant="16" id="PmW-R1-x8z"/>
-                            <constraint firstItem="lCo-Aw-zMM" firstAttribute="baseline" secondItem="r0h-b4-vWq" secondAttribute="firstBaseline" id="QdN-Mz-RL3"/>
-                            <constraint firstItem="ZtJ-bu-fPT" firstAttribute="top" secondItem="kw7-Cy-9CE" secondAttribute="bottom" constant="44" id="WhV-ba-Vhe"/>
-                            <constraint firstItem="lCo-Aw-zMM" firstAttribute="top" secondItem="r0h-b4-vWq" secondAttribute="top" id="Yss-n1-FMp"/>
-                            <constraint firstItem="ZtJ-bu-fPT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="a79-gq-iSD"/>
-                            <constraint firstItem="lCo-Aw-zMM" firstAttribute="top" secondItem="NPt-jB-ltj" secondAttribute="bottom" constant="40" id="aUS-n6-rh6"/>
-                            <constraint firstItem="FSQ-7b-l58" firstAttribute="top" secondItem="kw7-Cy-9CE" secondAttribute="bottom" constant="85" id="cl3-NF-vGX"/>
-                            <constraint firstItem="FSQ-7b-l58" firstAttribute="trailing" secondItem="ZtJ-bu-fPT" secondAttribute="trailing" id="fEO-U7-zep"/>
-                            <constraint firstItem="kw7-Cy-9CE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="85" id="fHP-x5-iXv"/>
-                            <constraint firstItem="ZtJ-bu-fPT" firstAttribute="leading" secondItem="lCo-Aw-zMM" secondAttribute="leading" id="ulF-ZV-cwQ"/>
-                            <constraint firstItem="kw7-Cy-9CE" firstAttribute="centerX" secondItem="NPt-jB-ltj" secondAttribute="centerX" id="v24-GD-Une"/>
-                            <constraint firstItem="NPt-jB-ltj" firstAttribute="top" secondItem="FSQ-7b-l58" secondAttribute="bottom" constant="8" symbolic="YES" id="wHu-xI-qPA"/>
-                            <constraint firstItem="kw7-Cy-9CE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wtw-W1-u6j"/>
-                            <constraint firstItem="ZtJ-bu-fPT" firstAttribute="trailing" secondItem="r0h-b4-vWq" secondAttribute="trailing" id="zJf-1e-WyJ"/>
-                        </constraints>
-                    </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-727.5" y="81.5"/>
-        </scene>
         <!--Top Rated-->
         <scene sceneID="Bxb-e0-8IF">
             <objects>
@@ -743,7 +656,6 @@
         <image name="Search" width="25" height="25"/>
         <image name="SearchSelect" width="25" height="25"/>
         <image name="Spotlight" width="25" height="25"/>
-        <image name="Spotlight Logo" width="228" height="86"/>
         <image name="SpotlightSelect" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
